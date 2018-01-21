@@ -1,10 +1,10 @@
 #coding:utf-8
 import subprocess
 import os
-from PIL import Image
+from PIL import Image, ImageOps
 import glob
 
-def to_images(filename,folder):
+def to_images(filename,folder,density=300):
     """
     ImageMagickを呼び出してPDFを画像に変換する関数
     temp_folder内にtemp-[番号].pngとして保存する
@@ -14,39 +14,50 @@ def to_images(filename,folder):
     """
     png_path = folder + "temp.png"
     
-    # うちの環境ではconvertではなくmagic convert でやる
+    # うちの環境ではconvertではなくmagick convert でやる
     subprocess.call([
-        "magick","convert", 
-        "-density", "300", 
+        "magick","convert",
+        "-monitor",
+        "-density",str(density),
         filename,
-        "-resize","1240x1754",
+        #"-resize","1240x1754",
         png_path
     ])
 
-def cut_margin_all(folder,margins):
+def cut_margin_all(folder,margins,inverse=False,gray=False):
     """
     指定したフォルダのtemp-*.pngという画像のマージンを削除する関数
     
     folder:  この中にあるtemp-*.pngという画像についてマージンを削除する
     margins: 上下左右のマージンのピクセル数． [left, upper right, lower]
+    inverse: 色反転するならtrue
+    gray: グレーにするならtrue
     """
     files = glob.glob(folder + "temp-*.png")
     
     for f in files:
-        cut_margin_img(f,margins)
+        cut_margin_img(f,margins,inverse,gray)
 
-def cut_margin_img(f,margins):
+def cut_margin_img(f,margins,inverse,gray):
     """
     指定した画像のマージンを削除する関数
     
     f:       操作対象の画像
     margins: 上下左右のマージンのピクセル数． [left, upper right, lower]
+    inverse: 色反転するならtrue
+    gray: グレーにするならtrue
     """
     img = Image.open(f)
     w,h = img.size
     
     # 切り抜き(left, upper right, lower)
-    img.crop((margins[0],margins[1],w-margins[2],h-margins[3])).save(f)
+    img = img.crop((margins[0],margins[1],w-margins[2],h-margins[3])).convert('RGB')
+    if inverse:
+        img = ImageOps.invert(img)
+        
+    if gray:
+        img = ImageOps.grayscale(img)
+    img.save(f)
     
 def to_pdf(filename,folder):
     """
@@ -60,7 +71,7 @@ def to_pdf(filename,folder):
     n = len(glob.glob(folder + "temp-*.png"))
     imgs = [folder + "temp-%d.png" % i for i in range(n)]
     
-    cmd = ["magick","convert"] + imgs + [filename]
+    cmd = ["magick","convert","-monitor"] + imgs + [filename]
     subprocess.call(cmd)
 
 if __name__=="__main__":
@@ -71,9 +82,9 @@ if __name__=="__main__":
     
     # test.pdf
     print("converting pdf to images...")
-    to_images("test.pdf",temp_folder)
+    to_images("test.pdf",temp_folder,150)
     print("cutting margins...")
-    cut_margin_all(temp_folder,[100,100,100,100])
+    cut_margin_all(temp_folder,[100,100,100,100],True,True)
     print("converting images to pdf...")
     to_pdf("out.pdf",temp_folder)
     
@@ -81,32 +92,4 @@ if __name__=="__main__":
     # マージンの調整はこれで
     cut_margin_img(f,margins)
     """
-    
-"""
-# https://qiita.com/gyu-don/items/329de5e9b7f7d345dc90
-import sys
-import os.path
-from contextlib import closing
 
-from PyQt4 import QtCore
-from popplerqt4 import Poppler
-
-FORMAT = "PNG"
-EXT = ".png"
-
-def dump_image(path):
-    doc = Poppler.Document.load(path)
-    doc.setRenderHint(Poppler.Document.TextAntialiasing)
-    filename_fmt = os.path.splitext(path)[0]+"_{0}" + EXT
-    for n,page in ((i+1,doc.page(i)) for i in range(doc.numPages())):
-        img = page.renderToImage()
-        img.save(filename_fmt.format(n),FORMAT)
-
-if __name__ == "__main__":
-    app = QtCore.QCoreApplication(sys.argv)
-    if len(sys.argv) != 2:
-        print("Usage: {0} pdf_path".format(sys.argv[0]))
-    else:
-        dump_image(sys.argv[1])
-    
-    """
