@@ -1,0 +1,91 @@
+use std::io;
+use std::collections::HashMap;
+use std::collections::BinaryHeap;
+use std::mem;
+use std::cmp;
+
+
+fn read_line() -> String{
+    let mut s = String::new();
+    io::stdin().read_line(&mut s).unwrap();
+    s.trim().to_string()
+}
+
+fn read_ints() -> Vec<i64>{
+    let s = read_line();
+    let split:Vec<&str> = s.split(" ").collect();
+    split.iter().map(|&x| x.to_string().parse().unwrap()).collect()
+}
+
+fn read_int() -> i64{
+    read_ints()[0]
+}
+
+fn getn(n:i64) -> i64{
+    for i in  0..32 as i64{
+        if (n>>i)%2 == 1{
+            return i;
+        }
+    }
+    return 0;
+}
+
+fn main(){
+    let n = read_int();
+
+    let xs = read_ints();
+
+    let mut ys = xs.iter().map(|a|getn(*a));
+//    let y = ys.fold(1<<32,|x,y| cmp::min(x,y));
+    println!("{}",ys.nth(0).unwrap());
+  //  println!("{}",y);
+}
+
+
+
+/*
+DOCS
+
+
+let mut h = HashMap::new();
+let a = 5;
+h.insert(a,true);
+match h.get(&a){
+    Some(v) => println!("{}",v),
+    None    => println!("none"),
+}
+
+
+use std::mem;
+
+let mut x = 5;
+let mut y = 1;
+mem::swap(&mut x,&mut y);
+
+
+let v = vec![0;2]; // [0,0]
+
+s.chars().nth(i as usize).unwrap();
+
+
+// priority queue
+// https://doc.rust-lang.org/std/collections/struct.BinaryHeap.html
+use std::collections::BinaryHeap;
+let mut heap = BinaryHeap::new();
+
+heap.push(1);
+heap.push(5);
+heap.push(2);
+
+assert_eq!(heap.pop(), Some(5));
+assert_eq!(heap.pop(), Some(2));
+assert_eq!(heap.pop(), Some(1));
+assert_eq!(heap.pop(), None);
+
+
+let mut vs = heap.into_vec();
+vs.reverse();
+
+
+
+*/
