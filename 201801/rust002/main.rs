@@ -1,9 +1,8 @@
 use std::io;
-//use std::collections::HashMap;
-//use std::collections::BinaryHeap;
-use std::collections::HashSet;
-//use std::mem;
-//use std::cmp;
+use std::collections::HashMap;
+use std::collections::BinaryHeap;
+use std::mem;
+use std::cmp;
 
 
 fn read_line() -> String{
@@ -22,42 +21,19 @@ fn read_int() -> i64{
     read_ints()[0]
 }
 
-//////////////////////////////////////////////////////////////////////
-
-fn reverse(s: &String) -> String{
-    s.chars().rev().collect::<String>()
-}
-
-fn solve(){
-    let mut myset = HashSet::new();
-    let s = read_line();
-
-    for i in 1..s.len(){
-        let first = s[0..i].to_string();
-        let rfirst = reverse(&first);
-        let rest  = s[i..s.len()].to_string();
-        let rrest = reverse(&rest);
-        
-        myset.insert(format!("{}{}",rest,first));
-        myset.insert(format!("{}{}",rest,rfirst));
-        myset.insert(format!("{}{}",rrest,first));
-        myset.insert(format!("{}{}",rrest,rfirst));
-        
-        myset.insert(format!("{}{}",first,rest));
-        myset.insert(format!("{}{}",first,rrest));
-        myset.insert(format!("{}{}",rfirst,rest));
-        myset.insert(format!("{}{}",rfirst,rrest));
+fn getn(n:i64) -> i64{
+    for i in  0..32 as i64{
+        if (n>>i)%2 == 1{
+            return i;
+        }
     }
-    
-    println!("{}",myset.len());
-
+    return 0;
 }
 
 fn main(){
-    let n = read_int();
-    for _i in 0..n{
-        solve();
-    }
+    let xs = read_ints();
+    let (n,hx,hy) = (xs[0],xs[1],xs[2]);
+    let ys = read_ints();    
 }
 
 
