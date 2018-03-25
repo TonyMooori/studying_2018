@@ -1,0 +1,47 @@
+$date
+	Sat Mar 24 23:54:55 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module EXOR_TEST $end
+$scope module unit1 $end
+$var wire 1 ! in1 $end
+$var wire 1 " in2 $end
+$var wire 1 # out $end
+$scope function FUNC $end
+$var reg 1 $ FUNC $end
+$var reg 1 % a $end
+$var reg 1 & b $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0&
+0%
+0$
+0#
+0"
+0!
+$end
+#100
+1#
+1$
+1&
+1"
+#200
+0&
+1%
+0"
+1!
+#300
+0#
+0$
+1&
+1"
+#400

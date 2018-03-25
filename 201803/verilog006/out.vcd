@@ -1,0 +1,101 @@
+$date
+	Sun Mar 25 15:59:57 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module TESTBENCH $end
+$scope module unit1 $end
+$var wire 4 ! in [3:0] $end
+$var wire 10 " out [9:0] $end
+$var wire 1 # err $end
+$scope function FUNC_DEC $end
+$var reg 11 $ FUNC_DEC [10:0] $end
+$var reg 4 % in [3:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 %
+b1 $
+0#
+b1 "
+b0 !
+$end
+#100
+b10 "
+b10 $
+b1 %
+b1 !
+#200
+b100 "
+b100 $
+b10 %
+b10 !
+#300
+b1000 "
+b1000 $
+b11 %
+b11 !
+#400
+b10000 "
+b10000 $
+b100 %
+b100 !
+#500
+b100000 "
+b100000 $
+b101 %
+b101 !
+#600
+b1000000 "
+b1000000 $
+b110 %
+b110 !
+#700
+b10000000 "
+b10000000 $
+b111 %
+b111 !
+#800
+b100000000 "
+b100000000 $
+b1000 %
+b1000 !
+#900
+b1000000000 "
+b1000000000 $
+b1001 %
+b1001 !
+#1000
+b0 "
+1#
+b10000000000 $
+b1010 %
+b1010 !
+#1100
+b1011 %
+b1011 !
+#1200
+b1100 %
+b1100 !
+#1300
+b1101 %
+b1101 !
+#1400
+b1110 %
+b1110 !
+#1500
+b1111 %
+b1111 !
+#1600
+b1 "
+0#
+b1 $
+b0 %
+b0 !

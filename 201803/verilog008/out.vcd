@@ -1,0 +1,38 @@
+$date
+	Sun Mar 25 23:59:09 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module TESTBENCH $end
+$scope module u1 $end
+$var wire 1 ! r $end
+$var wire 1 " s $end
+$var reg 1 # q $end
+$var reg 1 $ q_b $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x$
+x#
+0"
+0!
+$end
+#100
+0$
+1#
+1"
+#200
+1$
+0#
+0"
+1!
+#300
+0$
+1"
+#400

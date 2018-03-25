@@ -1,0 +1,35 @@
+$date
+	Sat Mar 24 22:41:46 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module AND_2_TEST $end
+$var wire 1 ! out $end
+$var reg 1 " in1 $end
+$var reg 1 # in2 $end
+$scope module temp $end
+$var wire 1 " IN1 $end
+$var wire 1 # IN2 $end
+$var wire 1 ! OUT $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0#
+0"
+0!
+$end
+#100
+1"
+#200
+1#
+0"
+#300
+1!
+1"
+#500
