@@ -1,0 +1,7 @@
+v 4
+file . "ha.vhdl" "60dbad31c7eb98079cca73af5be21b79aca5e196" "20180323140243.499":
+  entity ha at 1( 0) + 0 on 13;
+  architecture rtl of ha at 11( 146) + 0 on 14;
+file . "testbench.vhdl" "6045b31d16ba537f483f4dd71e1810f633152505" "20180323140227.712":
+  entity testbench at 1( 0) + 0 on 11;
+  architecture stimulus of testbench at 7( 76) + 0 on 12;

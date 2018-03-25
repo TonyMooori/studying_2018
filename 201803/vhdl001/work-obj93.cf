@@ -1,0 +1,4 @@
+v 4
+file . "ha.vhdl" "60dbad31c7eb98079cca73af5be21b79aca5e196" "20180323134729.292":
+  entity ha at 1( 0) + 0 on 11;
+  architecture rtl of ha at 11( 146) + 0 on 12;
