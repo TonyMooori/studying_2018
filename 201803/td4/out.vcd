@@ -1,0 +1,372 @@
+$date
+	Thu Mar 29 19:41:58 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module CPU_TEST $end
+$scope module cpu $end
+$var wire 1 ! clk $end
+$var wire 1 " reset $end
+$var wire 2 # select [1:0] $end
+$var wire 8 $ rom_out [7:0] $end
+$var wire 4 % reg_d_out [3:0] $end
+$var wire 4 & reg_c_out [3:0] $end
+$var wire 4 ' reg_b_out [3:0] $end
+$var wire 4 ( reg_a_out [3:0] $end
+$var wire 4 ) reg_1_out [3:0] $end
+$var wire 4 * pc_next [3:0] $end
+$var wire 4 + opcode [3:0] $end
+$var wire 4 , load [3:0] $end
+$var wire 4 - imm [3:0] $end
+$var wire 1 . carry_out $end
+$var wire 4 / alu_out [3:0] $end
+$var wire 4 0 alu_in [3:0] $end
+$scope module alu $end
+$var wire 4 1 b [3:0] $end
+$var wire 4 2 out [3:0] $end
+$var wire 1 . carry_out $end
+$var wire 4 3 a [3:0] $end
+$upscope $end
+$scope module decoder $end
+$var wire 1 4 c_flag $end
+$var wire 4 5 opcode [3:0] $end
+$var reg 4 6 load [3:0] $end
+$var reg 2 7 select [1:0] $end
+$upscope $end
+$scope module reg_1 $end
+$var wire 1 ! clk $end
+$var wire 4 8 d [3:0] $end
+$var wire 1 9 enable $end
+$var wire 1 " reset $end
+$var reg 4 : q [3:0] $end
+$upscope $end
+$scope module reg_a $end
+$var wire 1 ! clk $end
+$var wire 4 ; d [3:0] $end
+$var wire 1 < enable $end
+$var wire 1 " reset $end
+$var reg 4 = q [3:0] $end
+$upscope $end
+$scope module reg_b $end
+$var wire 1 ! clk $end
+$var wire 4 > d [3:0] $end
+$var wire 1 ? enable $end
+$var wire 1 " reset $end
+$var reg 4 @ q [3:0] $end
+$upscope $end
+$scope module reg_c $end
+$var wire 1 ! clk $end
+$var wire 4 A d [3:0] $end
+$var wire 1 B enable $end
+$var wire 1 " reset $end
+$var reg 4 C q [3:0] $end
+$upscope $end
+$scope module reg_d $end
+$var wire 1 ! clk $end
+$var wire 4 D d [3:0] $end
+$var wire 1 E enable $end
+$var wire 1 " reset $end
+$var reg 4 F q [3:0] $end
+$upscope $end
+$scope module rom $end
+$var wire 4 G address [3:0] $end
+$var reg 8 H dout [7:0] $end
+$upscope $end
+$scope module selector $end
+$var wire 4 I in0 [3:0] $end
+$var wire 4 J in1 [3:0] $end
+$var wire 4 K in2 [3:0] $end
+$var wire 4 L in3 [3:0] $end
+$var wire 2 M select [1:0] $end
+$var wire 4 N out [3:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx N
+bx M
+b0 L
+b101 K
+bx J
+bx I
+bx H
+bx G
+bx F
+1E
+bx D
+bx C
+xB
+bx A
+bx @
+x?
+bx >
+bx =
+x<
+bx ;
+bx :
+19
+b0x 8
+bx 7
+bx 6
+bx 5
+x4
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+x.
+bx -
+bx ,
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+bx %
+bx $
+bx #
+0"
+0!
+$end
+#1
+b0 /
+b0 2
+b0 ;
+b0 >
+b0 A
+b0 8
+0.
+b11 +
+b11 5
+b0 -
+b0 1
+b110000 $
+b110000 H
+b1 *
+b1 D
+0B
+0?
+1<
+b1 ,
+b1 6
+b11 #
+b11 7
+b11 M
+b0 0
+b0 3
+b0 N
+04
+b0 (
+b0 =
+b0 I
+b0 '
+b0 @
+b0 J
+b0 &
+b0 C
+b0 %
+b0 F
+b0 G
+b0 )
+b0 :
+1"
+#2
+0"
+#100
+b0 #
+b0 7
+b0 M
+b1010 /
+b1010 2
+b1010 ;
+b1010 >
+b1010 A
+b0 +
+b0 5
+b1010 -
+b1010 1
+b1010 $
+b1010 H
+b10 *
+b10 D
+b1 %
+b1 F
+b1 G
+1!
+#200
+0!
+#300
+1?
+0<
+b10 ,
+b10 6
+b11 #
+b11 7
+b11 M
+b111 +
+b111 5
+b100 -
+b100 1
+b1110100 $
+b1110100 H
+b100 /
+b100 2
+b100 ;
+b100 >
+b100 A
+b0 8
+0.
+b0 0
+b0 3
+b0 N
+b11 *
+b11 D
+b1010 (
+b1010 =
+b1010 I
+b10 %
+b10 F
+b10 G
+1!
+#400
+0!
+#500
+b100 0
+b100 3
+b100 N
+b1 #
+b1 7
+b1 M
+b101 /
+b101 2
+b101 ;
+b101 >
+b101 A
+b101 +
+b101 5
+b1 -
+b1 1
+b1010001 $
+b1010001 H
+b100 *
+b100 D
+b11 %
+b11 F
+b11 G
+b100 '
+b100 @
+b100 J
+1!
+#600
+0!
+#700
+0?
+1<
+b1 ,
+b1 6
+b1 +
+b1 5
+b0 -
+b0 1
+b10000 $
+b10000 H
+b101 /
+b101 2
+b101 ;
+b101 >
+b101 A
+b101 0
+b101 3
+b101 N
+b101 *
+b101 D
+b101 '
+b101 @
+b101 J
+b100 %
+b100 F
+b100 G
+1!
+#800
+0!
+#900
+b0 0
+b0 3
+b0 N
+0<
+b1000 ,
+b1000 6
+b11 #
+b11 7
+b11 M
+b101 /
+b101 2
+b101 ;
+b101 >
+b101 A
+b1111 +
+b1111 5
+b101 -
+b101 1
+b11110101 $
+b11110101 H
+b101 *
+b101 D
+b101 %
+b101 F
+b101 G
+b101 (
+b101 =
+b101 I
+1!
+#1000
+0!
+#1100
+1!
+#1200
+0!
+#1300
+1!
+#1400
+0!
+#1500
+1!
+#1600
+0!
+#1700
+1!
+#1800
+0!
+#1900
+1!
+#2000
+0!
+#2100
+1!
+#2200
+0!
+#2300
+1!
+#2400
+0!
+#2500
+1!
+#2600
+0!
+#2700
+1!
+#2800
+0!
+#2900
+1!
+#3000
+0!
+#3002
