@@ -1,0 +1,46 @@
+$date
+	Mon Mar 26 10:59:31 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module TESTBENCH $end
+$scope module u1 $end
+$var wire 1 ! clk $end
+$var wire 4 " in [3:0] $end
+$var wire 1 # r $end
+$var reg 4 $ q [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx $
+0#
+b101 "
+0!
+$end
+#50
+b101 $
+1!
+#100
+b0 $
+0!
+1#
+#150
+1!
+#200
+0!
+0#
+#250
+b101 $
+1!
+#300
+0!
+#350
+1!
+#400
+0!
