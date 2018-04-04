@@ -12,10 +12,19 @@ Exp = (Atom,List)
 
 class Env(dict):
     def __init__(self,parms=(),args=(),outer=None):
+        # print("ENV")
+        # print(parms)
+        # print(args)
         self.update(zip(parms,args))
         self.outer = outer
+        # print(self)
     def find(self,var):
-        return self if (var in self) else self.outer.find(var)
+        if var in self:
+            return self
+        elif self.outer is None:
+            raise ValueError("%s is not declared." % var)
+        else:
+            return self.outer.find(var)
 
 class Procedure(object):
     def __init__(self,parms,body,env):
@@ -24,7 +33,8 @@ class Procedure(object):
         self.env = env
     
     def __call__(self,*args):
-        return evaluate(self.body,Env(self.parms,args,self.env))
+        new_env = Env(self.parms,args,self.env)
+        return evaluate(self.body,new_env)
 
 
 def tokenize(chars:str) -> list:
@@ -90,12 +100,18 @@ def standard_env() -> Env:
         'procedure?': callable,
         'round':   round,
         'symbol?': lambda x: isinstance(x, Symbol),
+        'int' : int,
+        'float' : float,
     })
     return env
 
 global_env = standard_env()
 
 def evaluate(x:Exp,env=global_env) -> Exp:
+    # print("evaluate: %s"  % x)
+    # print("env=" )
+    # print(env)
+
     if isinstance(x,Symbol):
         return env.find(x)[x]
     elif not isinstance(x,List):
@@ -107,7 +123,7 @@ def evaluate(x:Exp,env=global_env) -> Exp:
         return args[0]
     elif op == "if":
         _,test,coseq,alt = x
-        exp = (coseq if eval(test) else alt)
+        exp = (coseq if evaluate(test,env) else alt)
         return evaluate(exp,env)
     elif op == "do":
         last = None
@@ -127,6 +143,11 @@ def evaluate(x:Exp,env=global_env) -> Exp:
 
 
 def main():
+    with open("lib.lisp","r") as f:
+        lines = f.readlines()
+    code = "".join(lines)
+    evaluate(parse(code))
+
     while True:
         code = ""
         while code == "" or code.count("(") > code.count(")"):
