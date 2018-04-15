@@ -98,6 +98,10 @@ fn search_same(v:&Vec<i64>,vs:&Vec< Vec<i64> >) -> Vec<usize>{
     ret
 }
 
+fn to_symmetric(board:&mut Vec<Vec<i64>>){
+    
+}
+
 fn main(){
     let inputs = read_ints();
     let (h,w) = (inputs[0],inputs[1]);
