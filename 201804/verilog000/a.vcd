@@ -1,0 +1,47 @@
+$date
+	Wed Apr 18 00:11:49 2018
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module TEST_BENCH $end
+$var reg 1 ! out $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+1!
+$end
+#973140
+0!
+#974952
+1!
+#976760
+0!
+#985804
+1!
+#987616
+0!
+#991232
+1!
+#1973760
+0!
+#1975568
+1!
+#1977376
+0!
+#1986424
+1!
+#1988232
+0!
+#1991852
+1!
+#2974264
+0!
+#2976076
+1!
+#2977884
+0!
