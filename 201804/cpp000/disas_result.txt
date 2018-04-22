@@ -1,0 +1,49 @@
+>>> gcc -g -o main.exe main.c
+>>> gdb -q -ex "set disassembly-flavor intel" -ex "disp/i $pc" main.exe
+Reading symbols from main.exe...done.
+(gdb) disas main
+Dump of assembler code for function main:
+   0x004013e0 <+0>:     push   ebp
+   0x004013e1 <+1>:     mov    ebp,esp
+   0x004013e3 <+3>:     and    esp,0xfffffff0
+   0x004013e6 <+6>:     sub    esp,0x20
+   0x004013e9 <+9>:     call   0x4018b0 <__main>
+   0x004013ee <+14>:    lea    eax,[esp+0x18]
+   0x004013f2 <+18>:    mov    DWORD PTR [esp+0x4],eax
+   0x004013f6 <+22>:    mov    DWORD PTR [esp],0x40a064
+   0x004013fd <+29>:    call   0x407f68 <scanf>
+   0x00401402 <+34>:    mov    eax,DWORD PTR [esp+0x18]
+   0x00401406 <+38>:    and    eax,0x1
+   0x00401409 <+41>:    test   eax,eax
+   0x0040140b <+43>:    jne    0x401414 <main+52>
+   0x0040140d <+45>:    mov    eax,0x40a067
+   0x00401412 <+50>:    jmp    0x401419 <main+57>
+   0x00401414 <+52>:    mov    eax,0x40a06b
+   0x00401419 <+57>:    mov    DWORD PTR [esp+0x1c],eax
+   0x0040141d <+61>:    mov    eax,DWORD PTR [esp+0x1c]
+   0x00401421 <+65>:    mov    DWORD PTR [esp],eax
+   0x00401424 <+68>:    call   0x407f78 <puts>
+   0x00401429 <+73>:    mov    eax,0x0
+   0x0040142e <+78>:    leave
+   0x0040142f <+79>:    ret
+End of assembler dump.
+(gdb) x/8xb 0x40a067
+0x40a067 <__register_frame_info+4235367>:       0x41    0x41    0x41    0x00    0x42    0x42    0x42    0x42
+(gdb) x/8xb 0x40a06d
+0x40a06d <__register_frame_info+4235373>:       0x42    0x42    0x00    0x20    0x19    0x40    0x00    0x4d
+(gdb) list
+1       #include<stdio.h>
+2
+3       int main(){
+4               int n;
+5               char *s;
+6
+7               scanf("%d",&n);
+8               s = n%2==0 ? "AAA" : "BBBB";
+9               printf("%s\n",s);
+10
+(gdb) x/8xb 0x40a06n
+Invalid number "0x40a06n".
+(gdb) x/8xb 0x40a06b
+0x40a06b <__register_frame_info+4235371>:       0x42    0x42    0x42    0x42    0x00    0x20    0x19    0x40
+(gdb) quit
