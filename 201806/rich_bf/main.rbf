@@ -1,0 +1,28 @@
+set n_loop 26
+
+set alphabet 65
+
+while n_loop
+    ; comment
+    putc alphabet
+    add alphabet 1
+    sub n_loop 1
+end
+
+putc 10
+
+set a 32    ; a = 32
+set b 2     ; b = 2
+mul a b     ; a = a * b
+add a 1     ; a = a + 1
+putc a      ; 'A'
+
+set a 1
+if a
+    putc 66 ; 'B'
+end
+
+set a 0
+if a
+    putc 67 ; 'C'
+end
