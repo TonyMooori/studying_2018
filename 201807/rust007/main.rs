@@ -1,4 +1,4 @@
-// アルゴリズムパズル 6. 指数え
+// アルゴリズムパズル 7. 真夜中の橋渡り
 use std::io;
 use std::cmp::{max,min};
 use std::collections::BinaryHeap;
